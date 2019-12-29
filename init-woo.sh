@@ -7,8 +7,8 @@ echo "Entering ${PWD}/WooPress"
 cd WooPress || exit 1
 echo "Done"
 echo "Initializing docker-compose network"
-docker-compose up -d
+docker-compose up
 echo "Done"
 echo "Opening WooPress in browser..."
-open http://localhost/
+open http://localhost/wp-admin
 echo "Done"
