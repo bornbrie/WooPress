@@ -1,8 +1,6 @@
 # WooPress
 Demo WordPress docker image with WooOS installed
 
-## Instructions
-
 ### Install
 Run the following commands to download, build, and run a local copy of WordPress with WooOS pre-installed.
 
