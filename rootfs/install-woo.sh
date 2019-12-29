@@ -53,9 +53,9 @@ then
   rm -rf all-in-one-seo-pack
 fi
 
-if [ -d "./WooOS-Storefront" ]
+if [ -d "./WooStorefront" ]
 then
-  rm -rf WooOS-Storefront
+  rm -rf WooStorefront
 fi
 
 echo "Done"
