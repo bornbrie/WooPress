@@ -13,7 +13,7 @@ if [[ "$1" == "nami" && "$2" == "start" ]] || [[ "$1" == "/init.sh" ]]; then
     echo "Activating WooStorefront"
     su daemon -s /bin/bash -c '/opt/bitnami/wp-cli/bin/wp plugin activate WooStorefront'
     info "Starting wordpress... "
-    . /post-init-woo.sh
+    . /post-init.sh
 fi
 
 exec tini -- "$@"
