@@ -2,15 +2,20 @@
 Demo WordPress docker image with WooOS installed
 
 ## Instructions
-Run the following commands to run a local copy of WordPress with WooOS pre-installed, and view it on http://localhost
 
-`git clone https://github.com/bornbrie/WooPress.git`
+### Install
+Run the following commands to download, build, and run a local copy of WordPress with WooOS pre-installed.
 
-`cd WooPress`
+View it in your browser at http://localhost/
 
-`docker-compose up`
+```
+git clone https://github.com/bornbrie/WooPress.git
+cd WooPress
+docker-compose up
+open http://localhost/
+```
 
-`open localhost`
+### Login
 
 The WordPress username is `admin`
 
