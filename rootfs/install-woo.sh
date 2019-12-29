@@ -1,6 +1,8 @@
 #!/bin/bash
+
 cd /opt/bitnami/wordpress/wp-content/plugins || exit
 
+echo "Removing default plugins from WordPress installation..."
 if [ -d "./akismet"]
 then
   rm -rf akismet
@@ -56,6 +58,8 @@ then
   rm -rf WooOS-Storefront
 fi
 
-echo "Cloning WooOS Storefront to plugins directory..."
+echo "Done"
+
+echo "Cloning WooOS into plugins directory..."
 git clone https://github.com/bornbrie/WooOS-Storefront.git
 echo "Success"
