@@ -15,8 +15,4 @@ cd WooPress || exit 1
 echo "Done"
 echo "Initializing docker-compose network"
 docker-compose build --no-cache
-docker-compose up -d
-echo "Done"
-echo "Opening WooPress in browser..."
-open http://localhost/wp-admin
-echo "Done"
+docker-compose up
