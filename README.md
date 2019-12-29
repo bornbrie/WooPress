@@ -9,7 +9,7 @@ View it in your browser at http://localhost/
 ```
 git clone https://github.com/bornbrie/WooPress.git
 cd WooPress
-docker-compose up
+docker-compose up -d
 open http://localhost/
 ```
 
