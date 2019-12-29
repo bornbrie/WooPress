@@ -10,8 +10,8 @@ if [[ "$1" == "nami" && "$2" == "start" ]] || [[ "$1" == "/init.sh" ]]; then
     . /wordpress-init.sh
     nami_initialize apache php mysql-client wordpress
     . /install-woo.sh
-    echo "Activating WooOS"
-    su daemon -s /bin/bash -c '/opt/bitnami/wp-cli/bin/wp plugin activate WooOS-Storefront'
+    echo "Activating WooStorefront"
+    su daemon -s /bin/bash -c '/opt/bitnami/wp-cli/bin/wp plugin activate WooStorefront'
     info "Starting wordpress... "
     . /post-init-woo.sh
 fi
