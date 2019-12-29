@@ -61,5 +61,5 @@ fi
 echo "Done"
 
 echo "Cloning WooOS into plugins directory..."
-git clone https://github.com/bornbrie/WooOS-Storefront.git
+git clone https://github.com/bornbrie/WooStorefront.git
 echo "Success"
