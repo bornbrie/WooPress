@@ -1,51 +1,49 @@
-version: '3.3'
+
+version: '3.7'
 
 services:
-   db:
-     image: mysql:5.7
-     volumes:
-       - db_data:/var/lib/mysql
-     restart: always
-     environment:
-       MYSQL_ROOT_PASSWORD: password
-       MYSQL_DATABASE: wordpress
-       MYSQL_USER: wordpress
-       MYSQL_PASSWORD: wordpress
-     networks:
-       - woo_os
 
-   wordpress:
-     depends_on:
-       - db
-     image: bornbrie/woopress:latest
-     volumes: ["./app:/var/www/html"]
-     ports:
-       - 80:80
-       - 443:443
-     restart: always
-     environment:
-       WORDPRESS_DB_HOST: db:3306
-       WORDPRESS_DB_USER: wordpress
-       WORDPRESS_DB_PASSWORD: wordpress
-       WORDPRESS_DB_NAME: wordpress
-     networks:
-       - woo_os
+  mariadb:
+    image: 'bitnami/mariadb:10.3'
+    volumes:
+      - './app:/bitnami'
+    environment:
+      - MARIADB_USER=bn_wordpress
+      - MARIADB_DATABASE=wordpress
+      - ALLOW_EMPTY_PASSWORD=yes
+    networks:
+      - woo_os
 
-   phpmyadmin:
-     depends_on:
-       - db
-     image: phpmyadmin/phpmyadmin
-     restart: always
-     ports:
-       - 8080:80
-     environment:
-       PMA_HOST: db
-       MYSQL_ROOT_PASSWORD: password
-     networks:
-       - woo_os
+  wordpress:
+    container_name: woopress
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - '80:80'
+      - '443:443'
+    volumes:
+      - './app:/bitnami'
+    depends_on:
+      - mariadb
+    environment:
+      - WORDPRESS_USERNAME=admin
+      - WORDPRESS_PASSWORD=password
+      - WORDPRESS_BLOG_NAME=WooPress Demo
+      - MARIADB_HOST=mariadb
+      - MARIADB_PORT_NUMBER=3306
+      - WORDPRESS_DATABASE_NAME=wordpress
+      - WORDPRESS_DATABASE_USER=wordpress
+      - ALLOW_EMPTY_PASSWORD=yes
+    networks:
+      - woo_os
 
 networks:
   woo_os:
 
 volumes:
-    db_data: {}
+  mariadb_data:
+    driver: local
+  wordpress_data:
+    driver: local
