@@ -1,12 +1,5 @@
 #!/bin/bash
-echo "Cleaning up before install..."
-if [ -d "./WooPress" ]
-then
-  rm -rf WooPress
-fi
-yes | docker system prune -a
-docker container stop $(docker container ls -aq)
-echo "Done with cleanup"
+sh ./clean-up-docker.sh
 echo "Cloning WooPress to ${PWD}"
 git clone https://github.com/bornbrie/WooPress.git
 echo "Success"
